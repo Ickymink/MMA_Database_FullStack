@@ -1,0 +1,19 @@
+{
+  "name": "mmafighterdatabase",
+  "version": "1.0.0",
+  "description": "MMA Fighter Database Final Project",
+  "license": "ISC",
+  "author": "Cristian Rodriguez",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^5.2.1",
+    "mongoose": "^9.4.1",
+    "nodemon": "^3.1.14",
+    "pug": "^3.0.4"
+  }
+}
