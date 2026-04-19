@@ -1,0 +1,110 @@
+head
+    title MMA Fighter Database
+    link(href='https://fonts.googleapis.com/css2?family=Anton&family=Roboto+Condensed:wght@700&display=swap' rel='stylesheet')
+    link(rel='stylesheet' href='style.css')
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+header.main-header
+    h1 MMA Fighter Database
+    nav
+        a(href='/') Home
+        a(href='/fighters') Fighters
+        a(href='#') Events
+div.search-container
+    input#fighterSearch(type="text" placeholder="Search for a fighter..." oninput="showSuggestions()")
+    div#searchResults.search-results-dropdown
+main.fighter-db-container
+    aside.fighter-list
+        div.card-container 
+            each fighter in fighters
+                div.card
+                    div.image-box
+                        img.fighter-img(src=fighter.image)
+                        img.flag-icon(src=fighter.flag)
+                    div.card-content
+                        h2= fighter.name
+                        div.stats
+                            p #[span.label RECORD:] #{fighter.record}
+                        button.stats-btn(onclick=`showProfile('${fighter._id}')`) View Profile
+    section.fighter-profile#fighter-profile
+        div#profile-placeholder
+            h2 Select a fighter to view details
+        each fighter in fighters
+            div.full-profile(id=fighter._id style="display:none;")
+                div.profile-header
+                    img.fighter-img-profile(src=fighter.image)
+                    h2= fighter.name
+                    img.flag-icon-header(src=fighter.flag)
+                div.stats-grid
+                    div.stat-box #[strong Record:]#[br] #{fighter.record}
+                    div.stat-box #[strong Weight Class:]#[br] #{fighter.weightClass}
+                    div.stat-box #[strong Style:]#[br] #{fighter.style}
+                div.records-section
+                    h3 UFC Accomplishments
+                    ul.accomplishments-list
+                        each achievement in fighter.accomplishments
+                            li= achievement
+script.
+    function showProfile(id) {
+        document.getElementById('profile-placeholder').style.display = 'none';
+        document.querySelectorAll('.full-profile').forEach(p => p.style.display = 'none');
+        document.getElementById(id).style.display = 'block';
+    }
+
+    function showSuggestions() {
+        const input = document.getElementById('fighterSearch').value.toLowerCase();
+        const resultsBox = document.getElementById('searchResults');
+        const cards = document.querySelectorAll('.fighter-list .card');
+        
+        if (input.length === 0) {
+            resultsBox.innerHTML = '';
+            resultsBox.style.display = 'none';
+            return;
+        }
+
+        let matches = "";
+        cards.forEach(card => {
+            const name = card.querySelector('h2').innerText;
+            const idMatch = card.querySelector('button').getAttribute('onclick').match(/'([^']+)'/);
+            const id = idMatch ? idMatch[1] : null;
+            const img = card.querySelector('.fighter-img').src;
+
+            if (name.toLowerCase().startsWith(input) || name.toLowerCase().includes(" " + input)) {
+                matches += `
+                    <div class="result-item" onclick="selectFighter('${id}')">
+                        <img src="${img}" class="result-thumb">
+                        <span>${name}</span>
+                    </div>`;
+            }
+        });
+
+        if (matches !== "") {
+            resultsBox.innerHTML = matches;
+            resultsBox.style.display = 'block';
+        } else {
+            resultsBox.innerHTML = '<div class="result-item">No fighter found</div>';
+            resultsBox.style.display = 'block';
+        }
+    }
+
+    function selectFighter(id) {
+        showProfile(id);
+        document.getElementById('searchResults').style.display = 'none';
+        document.getElementById('fighterSearch').value = '';
+    }
+
+    function showProfile(id) {
+        document.getElementById('profile-placeholder').style.display = 'none';
+        document.querySelectorAll('.full-profile').forEach(p => p.style.display = 'none');
+        const target = document.getElementById(id);
+        if (target) target.style.display = 'block';
+    }
+
+    window.onload = function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const fighterId = urlParams.get('id');
+
+        if (fighterId) {
+            showProfile(fighterId);
+        }
+    };

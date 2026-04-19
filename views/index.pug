@@ -1,0 +1,71 @@
+doctype html
+head
+    title MMA Fighter Database
+    link(href='https://fonts.googleapis.com/css2?family=Anton&family=Roboto+Condensed:wght@700&display=swap' rel='stylesheet')
+    link(rel='stylesheet' href='style.css')
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+header.main-header
+    h1 MMA Fighter Database
+    nav
+        a(href='/') Home
+        a(href='/fighters') Fighters
+        a(href='#') Events
+.news-ticker
+    .ticker-content
+        span BREAKING: 
+        span UFC using AI for fight promos! UFC CEO Dana White responds by saying "Shut the f-uck up and watch the fights"
+        span  - 
+        span Charles Oliveira wins the BMF belt
+        span  - 
+        span | FIGHT ANNOUNCMENT: Joshua Van VS Tatsuro Taira moved to UFC 328 on May 9, 2026
+.content-wrapper
+    section.hero-matchup
+        .event-info
+            p.upcoming Next Event
+            h2 UFC 328: MAIN EVENT
+            p Saturday, May 9, 2026
+        .versus-matchup
+            img.poster-img(src='Images/FightPosters/UFC328.png' alt='UFC 328')
+    aside.rankings-sidebar
+        h3 Pound-for-Pound
+        img.p4p-champion-img(src='Images/IslamMakhachev.png' alt='Islam Makhachev')
+        ol
+            li Islam Makhachev
+            li Ilia Topuria
+            li Khamzat Chimaev
+            li Alexander Volkanovski
+            li Alex Pereira
+            li Petr Yan
+            li Merab Dvalishvili
+            li Tom Aspinall
+            li Alexandre Pantoja
+            li Max Halloway
+            li Joshua Van
+            li Dricus Du Plessis
+            li Magomed Ankalaev
+            li Jack Della Maddalena
+            li Arman Tsarukyan
+section.knockout-section
+    h3 Top Knockout
+    .video-container
+        iframe(src='https://www.youtube.com/embed/eF_2W2eG_ok' title='Top Knockout Video' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen='')
+div.card-container
+    each fighter in fighters
+        div.card
+            div.image-box
+                img.fighter-img(src=fighter.image)
+                img.flag-icon(src=fighter.flag)
+            div.card-content
+                h2= fighter.name
+                div.stats
+                    p 
+                        span.label RECORD: 
+                        | #{fighter.record}
+                    p 
+                        span.label WEIGHT CLASS: 
+                        | #{fighter.weightClass}
+                    p 
+                        span.label STYLE: 
+                        | #{fighter.style}
+                a.stats-btn(href=`/fighters?id=${fighter._id}`) View Profile
