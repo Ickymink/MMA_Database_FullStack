@@ -1,6 +1,6 @@
 # MMA Fighter Database - Full-Stack Web Application
 
-This project is a professional-grade MMA fighter management system built for **CIS 393**. It allows users to browse a roster of fighters, view detailed statistics, and features a secure Admin Dashboard for database management.
+This project is a MMA fighter management system built for **CIS 393**. It allows users to browse a roster of fighters, view detailed statistics, and features a secure Admin Dashboard for database management.
 
 ### Prerequisites
 * **Node.js** installed on your machine.
