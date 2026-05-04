@@ -1,0 +1,53 @@
+doctype html
+html
+    head
+        title Sign Up - MMA Database
+        link(rel='stylesheet' href='/style.css')
+        link(href='https://fonts.googleapis.com/css2?family=Anton&family=Roboto+Condensed:wght@700&display=swap' rel='stylesheet')
+        script(src="https://unpkg.com/lucide@latest")
+    body
+        header.main-header
+            h1 MMA Database
+            nav
+                a(href='/') Home
+        
+        main.auth-container
+            div.auth-box
+                h2 Create Account
+                if error
+                    div.error-msg(style="color: #ff4444; background: rgba(255, 68, 68, 0.1); padding: 10px; margin-bottom: 15px; border-radius: 4px; border: 1px solid #ff4444; font-size: 0.9rem; text-align: center;")
+                        | #{error}
+                form(action="/signup" method="POST")
+                    div.input-group
+                        label Full Name
+                        input(type="text" name="name" required placeholder="e.g. John Smith")
+                    div.input-group
+                        label Email
+                        input(type="email" name="email" required)
+                    div.input-group
+                        label Password
+                        div.password-wrapper
+                            input(type="password" name="password" id="passwordField" required)
+                            //- Using the 'eye' icon from Lucide
+                            i.toggle-password(data-lucide="eye" id="toggleIcon" onclick="togglePassword()")
+                    button.stats-btn(type="submit") Join the Roster
+                p Already have an account? 
+                    a(href="/login") Login here
+
+script.
+    function togglePassword() {
+        const passwordField = document.getElementById("passwordField");
+        const icon = document.getElementById("toggleIcon");
+        
+        if (passwordField.type === "password") {
+            passwordField.type = "text";
+            icon.setAttribute("data-lucide", "eye-off");
+        } else {
+            passwordField.type = "password";
+            icon.setAttribute("data-lucide", "eye");
+        }
+        // This line re-renders the icon after the change
+        lucide.createIcons();
+    }
+    // Initial render
+    lucide.createIcons();

@@ -1,0 +1,47 @@
+doctype html
+html
+    head
+        title Edit Fighter - MMA Database
+        link(rel='stylesheet' href='/style.css')
+        link(href='https://fonts.googleapis.com/css2?family=Anton&family=Roboto+Condensed:wght@700&display=swap' rel='stylesheet')
+    body
+        header.main-header
+            h1 EDIT MODE
+            nav
+                a(href='/admin') Back to Admin
+        
+        main.admin-container
+            section.add-fighter-box
+                h2 Modifying: #{fighter.name}
+                form(action=`/update/${fighter._id}` method="POST" enctype="multipart/form-data")
+                    div.form-grid
+                        div.input-group
+                            label Name
+                            input(type="text" name="name" value=fighter.name required)
+                        div.input-group
+                            label Record
+                            input(type="text" name="record" value=fighter.record)
+                        div.input-group
+                            label Weight Class
+                            input(type="text" name="weightClass" value=fighter.weightClass)
+                        div.input-group
+                            label Gender
+                            select(name="gender")
+                                option(value="Male" selected=fighter.gender === 'Male') Male
+                                option(value="Female" selected=fighter.gender === 'Female') Female
+                        div.input-group
+                            label Fighting Style
+                            input(type="text" name="style" value=fighter.style)
+                        div.input-group
+                            label Update Image (Optional)
+                            input(type="file" name="image" accept="image/*")
+                        div.input-group
+                            label Update Flag (Optional)
+                            input(type="file" name="flag" accept="image/*")
+                        div.input-group.full-width
+                            label Accomplishments (separate with commas)
+                            input(type="text" name="accomplishments" value=(fighter.accomplishments ? fighter.accomplishments.join(', ') : ''))
+                    
+                    div.edit-actions
+                        button.stats-btn(type="submit") Update Fighter
+                        a.clear-link(href="/admin") Discard Changes

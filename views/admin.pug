@@ -1,0 +1,64 @@
+doctype html
+html
+    head
+        title Admin Dashboard
+        link(rel='stylesheet' href='/style.css')
+        link(href='https://fonts.googleapis.com/css2?family=Anton&family=Roboto+Condensed:wght@700&display=swap' rel='stylesheet')
+    body
+        header.main-header
+            h1 ADMIN PANEL
+            nav
+                a(href='/') Home
+                a(href='/logout') Logout
+        
+        main.admin-container
+            section.add-fighter-box
+                h2 Register New Fighter
+                form(action="/insert" method="POST" enctype="multipart/form-data")
+                    div.form-grid
+                        div.input-group
+                            label Name
+                            input(type="text" name="name" placeholder="Jon Jones" required)
+                        div.input-group
+                            label Record
+                            input(type="text" name="record" placeholder="27-1-0")
+                        div.input-group
+                            label Weight Class
+                            input(type="text" name="weightClass" placeholder="Heavyweight")
+                        div.input-group
+                            label Gender
+                            select(name="gender")
+                                option(value="Male") Male
+                                option(value="Female") Female
+                        div.input-group
+                            label Fighting Style
+                            input(type="text" name="style" placeholder="Wrestling / Muay Thai")
+                        div.input-group
+                            label Fighter Image
+                            input(type="file" name="image" accept="image/*")
+                        div.input-group
+                            label Country Flag
+                            input(type="file" name="flag" accept="image/*")
+                        div.input-group
+                            label Accomplishments (separate with commas)
+                            input(type="text" name="accomplishments" placeholder="Former Champ, BMF Winner, 5 Title Defenses")
+                    
+                    button.stats-btn(type="submit" style="width: 100%; margin-top: 20px;") Add to Database
+
+            div.admin-search-container
+                form(action="/admin" method="GET")
+                    input(type="text" name="search" placeholder="Search roster by name...")
+                    button.stats-btn(type="submit") Filter
+                    if searchTerm
+                        a(href="/admin" style="color: #d20a0a; margin-left: 10px;") Clear
+
+            section.fighter-list
+                h2 Current Roster
+                each fighter in fighters
+                    div.admin-fighter-row
+                        span #{fighter.name} (#{fighter.weightClass})
+                        
+                        div.fighter-actions
+                            a.edit-btn(href=`/edit/${fighter._id}`) Edit
+                            form(action=`/delete/${fighter._id}` method="POST")
+                                button.delete-btn(type="submit") Delete

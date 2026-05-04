@@ -6,7 +6,18 @@ head
     meta(charset='UTF-8')
     meta(name='viewport' content='width=device-width, initial-scale=1.0')
 header.main-header
-    h1 MMA Fighter Database
+    div.header-top
+        h1 MMA Fighter Database
+        div.auth-buttons
+            if user
+                if isAdmin 
+                    a(href='/admin' style="color: #d20a0a; border-color: #d20a0a;") Admin Panel
+                
+                span Welcome, #{user}
+                a.logout-btn(href='/logout') Logout
+            else
+                a(href='/login') Login
+                a(href='/signup') Sign Up
     nav
         a(href='/') Home
         a(href='/fighters') Fighters

@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+input, button, select, textarea {
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
 /*--------------------------- Index Header -----------------------------------*/
 .main-header {
     background-color: #1a1a1a;
@@ -352,6 +356,7 @@
     display: none;
     max-height: 300px;
     overflow-y: auto;
+    font-family: 'Roboto Condensed', sans-serif;
 }
 
 .result-item {
@@ -402,6 +407,10 @@
 }
 
 /*--------------------------- Fighter Profile -----------------------------------*/
+#profile-placeholder{
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
 .full-profile {
     font-family: 'Roboto Condensed', sans-serif;
     color: #333;
@@ -501,4 +510,357 @@
     font-size: 0.95rem; 
     font-family: 'Roboto Condensed', sans-serif;
     font-weight: 500;
+}
+
+/*------------------------------------------------------------------------------ Authentication Pages ------------------------------------------------------------------------------------------*/
+/* Auth Header Positioning */
+.header-top {
+    display: block;
+    width: 100%;
+}
+
+.auth-buttons {
+    position: absolute;
+    top: 20px;
+    right: 30px; 
+    display: flex;
+    gap: 15px;
+    align-items: center
+}
+
+.auth-buttons a {
+    color: white;
+    text-decoration: none;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 0.85rem;
+    border: 2px solid #555; 
+    padding: 6px 18px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.auth-buttons a:hover {
+    background: #d20a0a;
+    border-color: #d20a0a;
+}
+
+.auth-buttons span {
+    color: #fff;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+.auth-buttons a.logout-btn {
+    border: 1px solid #444;
+    background: transparent;
+}
+
+.auth-buttons a.logout-btn:hover {
+    background: #d20a0a;
+    border-color: #d20a0a;
+}
+
+/*------------ Auth Page Layout */
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 60vh;
+    background-color: #111;
+}
+
+.auth-box {
+    background: #1a1a1a;
+    padding: 40px;
+    border-radius: 8px;
+    border-top: 5px solid #d20a0a;
+    width: 100%;
+    max-width: 400px;
+    color: white;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+}
+
+.auth-box h2 {
+    font-family: 'Anton', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #fff;
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-family: 'Roboto Condensed', sans-serif;
+    text-transform: uppercase; /* Makes it look more official */
+    font-weight: 700;
+    color: #bbb;
+    font-size: 0.9rem;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px;
+    background: #2a2a2a;
+    border: 1px solid #444;
+    color: white;
+    border-radius: 0; /* Boxy look matches the UFC better */
+    font-size: 1rem;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+.input-group input:focus {
+    border-color: #d20a0a;
+    outline: none;
+}
+
+.auth-box p {
+    margin-top: 20px;
+    text-align: center;
+    font-family: 'Roboto Condensed', sans-serif;
+    color: #888;
+}
+
+.auth-box p a {
+    color: #d20a0a;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.password-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 12px;
+    width: 20px; 
+    height: 20px;
+    cursor: pointer;
+    color: #666;
+    transition: color 0.2s ease;
+}
+
+.toggle-password:hover {
+    color: #d20a0a;
+}
+
+/* Ensure the input text doesn't go under the icon */
+.password-wrapper input {
+    padding-right: 45px !important;
+}
+
+/*------------------------------------------------------------------------------ Admin Page ------------------------------------------------------------------------------------------*/
+.admin-container {
+    padding: 60px 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+.admin-container h2 {
+    font-family: 'Anton', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 30px;
+    color: #fff;
+    border-left: 5px solid #d20a0a;
+    padding-left: 15px;
+}
+
+.add-fighter-box {
+    background: #1a1a1a;
+    padding: 40px;
+    border: 1px solid #333;
+    margin-bottom: 60px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group label {
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    color: #888;
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+}
+
+.input-group input {
+    background: #000;
+    border: 1px solid #444;
+    padding: 12px;
+    color: #fff;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: #d20a0a;
+    background: #0a0a0a;
+}
+
+.admin-fighter-row {
+    background: #1a1a1a;
+    padding: 20px;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #333;
+    transition: transform 0.2s ease;
+    color: #eee;
+}
+
+.admin-fighter-row:hover {
+    border-color: #555;
+    transform: translateX(5px);
+}
+
+.fighter-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.fighter-info .name {
+    font-family: 'Anton', sans-serif;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+}
+
+.fighter-info .sub-detail {
+    color: #888;
+    font-size: 0.9rem;
+}
+
+.fighter-actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.delete-btn {
+    background: transparent;
+    color: #ff4444;
+    border: 1px solid #ff4444;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-family: 'Roboto Condensed', sans-serif;
+    text-transform: uppercase;
+}
+
+.delete-btn:hover {
+    background: #ff4444;
+    color: white;
+}
+
+.edit-btn {
+    background: #333;
+    color: #fff;
+    border: 1px solid #555;
+    padding: 6px 15px;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 0.8rem;
+    transition: all 0.3s ease;
+}
+
+.edit-btn:hover {
+    background: #555;
+    border-color: #888;
+    color: #fff;
+}
+
+.fighter-list h2{
+    color: #000;
+}
+
+.admin-search-container {
+    background: #1a1a1a;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-left: 5px solid #d20a0a;
+    display: flex;
+    align-items: center;
+}
+
+.admin-search-container input {
+    background: #222;
+    border: 1px solid #444;
+    color: white;
+    padding: 10px 15px;
+    font-family: 'Roboto Condensed', sans-serif;
+    width: 300px;
+    margin-right: 10px;
+}
+
+.admin-search-container input:focus {
+    border-color: #d20a0a;
+    outline: none;
+}
+
+.clear-link {
+    color: #888;
+    text-decoration: none;
+    font-size: 0.9rem;
+    margin-left: 15px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.clear-link:hover {
+    color: #d20a0a;
+}
+
+select {
+    width: 100%;
+    padding: 10px;
+    background-color: #1a1a1a;
+    color: white;
+    border: 1px solid #333;
+    border-radius: 4px;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 1rem;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 1em;
+    cursor: pointer;
+}
+
+select:focus {
+    outline: none;
+    border-color: #d20a0a;
+}
+
+select option {
+    background-color: #1a1a1a;
+    color: white;
 }
