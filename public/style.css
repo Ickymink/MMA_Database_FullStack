@@ -285,7 +285,7 @@ input, button, select, textarea {
 
 .label {
     font-weight: bold;
-    color: #d20a0a; /* That UFC/ESPN red color */
+    color: #d20a0a;
 }
 
 .stats-btn {
@@ -565,7 +565,7 @@ input, button, select, textarea {
     border-color: #d20a0a;
 }
 
-/*------------ Auth Page Layout */
+/*------------ Auth Page Layout -------------*/
 .auth-container {
     display: flex;
     justify-content: center;
@@ -603,7 +603,7 @@ input, button, select, textarea {
     display: block;
     margin-bottom: 8px;
     font-family: 'Roboto Condensed', sans-serif;
-    text-transform: uppercase; /* Makes it look more official */
+    text-transform: uppercase;
     font-weight: 700;
     color: #bbb;
     font-size: 0.9rem;
@@ -615,7 +615,7 @@ input, button, select, textarea {
     background: #2a2a2a;
     border: 1px solid #444;
     color: white;
-    border-radius: 0; /* Boxy look matches the UFC better */
+    border-radius: 0;
     font-size: 1rem;
     font-family: 'Roboto Condensed', sans-serif;
 }
@@ -658,7 +658,6 @@ input, button, select, textarea {
     color: #d20a0a;
 }
 
-/* Ensure the input text doesn't go under the icon */
 .password-wrapper input {
     padding-right: 45px !important;
 }
@@ -712,7 +711,7 @@ input, button, select, textarea {
     background: #000;
     border: 1px solid #444;
     padding: 12px;
-    color: #fff;
+    color: #888;
     font-family: 'Roboto Condensed', sans-serif;
     font-size: 1rem;
     transition: all 0.3s ease;
@@ -813,7 +812,7 @@ input, button, select, textarea {
 .admin-search-container input {
     background: #222;
     border: 1px solid #444;
-    color: white;
+    color: #888;
     padding: 10px 15px;
     font-family: 'Roboto Condensed', sans-serif;
     width: 300px;
@@ -841,8 +840,8 @@ input, button, select, textarea {
 select {
     width: 100%;
     padding: 10px;
-    background-color: #1a1a1a;
-    color: white;
+    background: #000;
+    color: #888;
     border: 1px solid #333;
     border-radius: 4px;
     font-family: 'Roboto Condensed', sans-serif;

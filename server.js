@@ -83,12 +83,10 @@ app.post("/insert", upload.fields([{ name: 'image' }, { name: 'flag' }]), async 
             name: req.body.name,
             record: req.body.record,
             weightClass: req.body.weightClass,
-            gender: req.body.gender, // Now grabbing from the dropdown
+            gender: req.body.gender,
             style: req.body.style,
-            // Check if files exist before assigning paths
             image: req.files['image'] ? `/Images/${req.files['image'][0].originalname}` : '',
             flag: req.files['flag'] ? `/Images/Countries/${req.files['flag'][0].originalname}` : '',
-            // Safety check for accomplishments: split only if it exists, otherwise empty array
             accomplishments: req.body.accomplishments ? req.body.accomplishments.split(',').map(acc => acc.trim()) : []
         });
 
@@ -146,7 +144,7 @@ app.post("/update/:id", upload.fields([{ name: 'image' }, { name: 'flag' }]), as
             updates.accomplishments = req.body.accomplishments.split(',').map(item => item.trim());
         }
 
-        // The Update Operation: findByIdAndUpdate 
+        // The Update Operation
         await Fighter.findByIdAndUpdate(req.params.id, updates);
         res.redirect('/admin');
     } catch (err) {
@@ -238,7 +236,7 @@ app.post('/signup', async (req, res) => {
 });
 
 app.get('/logout', (req, res) => {
-    // This destroys the session bucket for this user
+    // Destroys the session bucket for this user
     req.session.destroy((err) => {
         if (err) {
             console.log("Error logging out:", err);
@@ -255,15 +253,13 @@ app.get("/admin", async (req, res) => {
     if (!req.session.isAdmin) return res.redirect("/login");
 
     try {
-        let query = {}; // 1. Initialize the variable
+        let query = {};
         const searchTerm = req.query.search;
 
         if (searchTerm) {
-            // 2. Fill it if there's a search
             query = { name: { $regex: searchTerm, $options: 'i' } };
         }
 
-        // 3. Now 'query' is defined whether there's a search or not
         const fighters = await Fighter.find(query).sort({ gender: -1, name: 1 });
         
         res.render("admin.pug", { 
