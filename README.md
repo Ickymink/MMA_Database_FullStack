@@ -12,3 +12,7 @@ This project is a MMA fighter management system built for **CIS 393**. It allows
 3. Install dependencies:
    ```bash
    npm install
+4. Start the server:
+   ```bash
+   node server.js
+5. Open your browser and go to: http://localhost:8080
