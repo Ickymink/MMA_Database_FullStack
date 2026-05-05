@@ -17,6 +17,10 @@ This project is a MMA fighter management system built for **CIS 393**. It allows
    node server.js
 5. Open your browser and go to: http://localhost:8080
 
+### MongoDB Compass Setup
+
+Import data from **mma_db.fighters.json** and **mma_db.users.json** into their respective MongoDB collections.
+
 ### Admin Access (For Testing)
 To access the Admin Panel, Search, Edit, and Delete functions, use the following credentials:
 
